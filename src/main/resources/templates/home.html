@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home - Products</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
 <h1>Welcome to the Home Page</h1>
@@ -10,17 +11,22 @@
 <a th:href="@{/wishlist/view}">View Wishlist</a>
 
 <h2>Products</h2>
-<div th:each="product : ${products}">
-    <p><b th:text="${product.name}">Product Name</b></p>
-    <p th:text="${product.description}">Description</p>
-    <p>₹ <span th:text="${product.price}">0.0</span></p>
-    <form th:action="@{'/cart/add/' + ${product.id}}" method="post">
-        <button type="submit">Add to Cart</button>
-    </form>
-    <form th:action="@{'/wishlist/add/' + ${product.id}}" method="post">
-        <button type="submit">Add to Wishlist</button>
-    </form>
-    <hr>
+
+<div class="product-grid">
+    <div class="product-card" th:each="product : ${products}">
+        <img th:src="@{'/images/' + ${product.imageName}}" alt="Image" />
+        <h3 th:text="${product.name}">Product Name</h3>
+        <p th:text="${product.description}">Description</p>
+        <p><strong>₹ <span th:text="${product.price}">0.0</span></strong></p>
+
+        <form th:action="@{'/cart/add/' + ${product.id}}" method="post">
+            <button type="submit">Add to Cart</button>
+        </form>
+        <form th:action="@{'/wishlist/add/' + ${product.id}}" method="post">
+            <button type="submit">Add to Wishlist</button>
+        </form>
+    </div>
 </div>
+    <hr>
 </body>
 </html>

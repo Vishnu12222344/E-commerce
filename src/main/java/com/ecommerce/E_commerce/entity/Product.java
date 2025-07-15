@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 
 @Entity
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,6 +13,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private int quantity;
+    private String imageName;
 
     @ManyToOne
     private Category category;
@@ -36,6 +36,9 @@ public class Product {
 
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    public String getImageName() { return imageName; }
+    public void setImageName(String imageName) { this.imageName = imageName; }
 
     public Category getCategory() { return category; }
     public void setCategory(Category category) { this.category = category; }
