@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Your Wishlist</title>
+</head>
+<body>
+<h2>Wishlist</h2>
+<div th:if="${#lists.isEmpty(items)}">
+  <p>No products in wishlist.</p>
+</div>
+<div th:unless="${#lists.isEmpty(items)}">
+  <ul>
+    <li th:each="wp : ${items}" th:text="${wp.product.name}"></li>
+  </ul>
+</div>
+</body>
+</html>
