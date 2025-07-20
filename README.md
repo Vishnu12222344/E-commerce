@@ -27,8 +27,8 @@ This is a robust E-commerce web application built using Spring Boot, focusing on
 - **Spring Data JPA**
 
 ## Technologies Used
-- Java 8
-- Spring Boot 3.x.x
+- Java 17
+- Spring Boot 3.5.3
 - Spring Security
 - Maven
 - MySQL
