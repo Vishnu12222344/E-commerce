@@ -30,8 +30,20 @@ public class ProductService {
         return categoryRepository.findAll();
     }
 
-    // ✅ Add this method to resolve the error
     public Category getCategoryById(Long id) {
         return categoryRepository.findById(id).orElse(null);
+    }
+
+    public void deleteProduct(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    // New method to get products by category ID
+    public List<Product> getProductsByCategoryId(Long categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElse(null);
+        if (category != null) {
+            return productRepository.findByCategory(category); // This method needs to be added to ProductRepository
+        }
+        return List.of(); // Return empty list if category not found
     }
 }
