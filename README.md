@@ -123,7 +123,6 @@ Important: Replace your_password with the actual password for your MySQL user.
 
 4. Build the Project
 Open your terminal or command prompt in the project's root directory (E-commerce) and run the Maven clean and install command:
-
 Bash
 
 mvn clean install
