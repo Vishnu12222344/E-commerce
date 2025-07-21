@@ -2,7 +2,6 @@ package com.ecommerce.E_commerce.controller;
 
 import com.ecommerce.E_commerce.entity.Order;
 import com.ecommerce.E_commerce.entity.User;
-import com.ecommerce.E_commerce.service.OrderService;
 import com.ecommerce.E_commerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +36,7 @@ public class AuthController {
     public static class PaymentController {
 
         @Autowired
-        private OrderService orderService;
+        private UserService.OrderService orderService;
 
         @GetMapping("/{orderId}")
         public String showPaymentPage(@PathVariable Long orderId, Model model) {

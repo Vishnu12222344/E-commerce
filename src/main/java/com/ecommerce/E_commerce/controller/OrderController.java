@@ -2,7 +2,6 @@ package com.ecommerce.E_commerce.controller;
 
 import com.ecommerce.E_commerce.entity.Order;
 import com.ecommerce.E_commerce.entity.User; // Import User
-import com.ecommerce.E_commerce.service.OrderService;
 import com.ecommerce.E_commerce.service.UserService; // Import UserService
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import java.util.List; // Import List
 public class OrderController {
 
     @Autowired
-    private OrderService orderService;
+    private UserService.OrderService orderService;
 
     @Autowired // Inject UserService
     private UserService userService;

@@ -4,10 +4,12 @@ import com.ecommerce.E_commerce.entity.Category;
 import com.ecommerce.E_commerce.entity.Product;
 import com.ecommerce.E_commerce.repository.CategoryRepository;
 import com.ecommerce.E_commerce.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -34,16 +36,28 @@ public class ProductService {
         return categoryRepository.findById(id).orElse(null);
     }
 
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
     public void deleteProduct(Long productId) {
         productRepository.deleteById(productId);
     }
 
-    // New method to get products by category ID
+    @Transactional
+    public void updateProductStock(Long productId, int newQuantity) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found with ID: " + productId));
+        product.setQuantity(newQuantity);
+        productRepository.save(product);
+    }
+
     public List<Product> getProductsByCategoryId(Long categoryId) {
         Category category = categoryRepository.findById(categoryId).orElse(null);
         if (category != null) {
-            return productRepository.findByCategory(category); // This method needs to be added to ProductRepository
+            return productRepository.findByCategory(category);
         }
-        return List.of(); // Return empty list if category not found
+        return List.of();
     }
 }

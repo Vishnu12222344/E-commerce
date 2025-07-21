@@ -20,6 +20,13 @@
       <label for="password">Password:</label>
       <input type="password" id="password" th:field="*{password}" required /><br>
     </div>
+    <div class="form-group">
+      <label for="role">Register as:</label>
+      <select id="role" th:field="*{role}" required>
+        <option value="ROLE_BUYER">Buyer</option>
+        <option value="ROLE_SELLER">Seller</option>
+      </select>
+    </div>
     <button type="submit">Register</button>
   </form>
   <p>Already have an account? <a th:href="@{/login}">Login</a></p>
