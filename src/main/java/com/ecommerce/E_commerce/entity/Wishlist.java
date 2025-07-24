@@ -21,7 +21,6 @@ public class Wishlist {
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
-    // ... your existing code ...
 
     public List<WishlistProduct> getItems() {
         return products;
